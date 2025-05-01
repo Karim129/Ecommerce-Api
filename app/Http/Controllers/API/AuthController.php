@@ -304,13 +304,13 @@ class AuthController extends Controller
                     return $this->error('Invalid token payload - null response', 401);
                 }
             } catch (\Google\Service\Exception $e) {
-                \Log::error('Google Service Exception: '.$e->getMessage());
+                \Log::error('Google Service Exception: ' . $e->getMessage());
 
-                return $this->error('Google Service Error: '.$e->getMessage(), 401);
+                return $this->error('Google Service Error: ' . $e->getMessage(), 401);
             } catch (\Exception $e) {
-                \Log::error('Token verification failed: '.$e->getMessage());
+                \Log::error('Token verification failed: ' . $e->getMessage());
 
-                return $this->error('Token verification failed: '.$e->getMessage(), 401);
+                return $this->error('Token verification failed: ' . $e->getMessage(), 401);
             }
 
             // Log successful payload for debugging
@@ -353,9 +353,9 @@ class AuthController extends Controller
                 'user' => new UserResource($user),
             ], 'Successfully logged in with Google');
         } catch (\Exception $e) {
-            \Log::error('Google login failed: '.$e->getMessage());
+            \Log::error('Google login failed: ' . $e->getMessage());
 
-            return $this->error('Failed to authenticate with Google: '.$e->getMessage(), 500);
+            return $this->error('Failed to authenticate with Google: ' . $e->getMessage(), 500);
         }
     }
 
