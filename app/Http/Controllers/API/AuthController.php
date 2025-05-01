@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
@@ -23,25 +22,6 @@ use Illuminate\Support\Str;
  * )
  *
  * @OA\Schema(
- *     schema="RegisterRequest",
- *     required={"name", "email", "password", "password_confirmation"},
- *
- *     @OA\Property(property="name", type="string", maxLength=255),
- *     @OA\Property(property="email", type="string", format="email", maxLength=255),
- *     @OA\Property(property="password", type="string", format="password", minLength=8),
- *     @OA\Property(property="password_confirmation", type="string", format="password"),
- *     @OA\Property(property="image", type="string", format="binary")
- * )
- *
- * @OA\Schema(
- *     schema="LoginRequest",
- *     required={"email", "password"},
- *
- *     @OA\Property(property="email", type="string", format="email"),
- *     @OA\Property(property="password", type="string", format="password")
- * )
- *
- * @OA\Schema(
  *     schema="GoogleLoginRequest",
  *     required={"token"},
  *
@@ -54,57 +34,6 @@ use Illuminate\Support\Str;
  *     @OA\Property(property="message", type="string"),
  *     @OA\Property(property="user", ref="#/components/schemas/User"),
  *     @OA\Property(property="token", type="string")
- * )
- *
- * @OA\Schema(
- *     schema="ValidationError",
- *
- *     @OA\Property(
- *         property="message",
- *         type="string",
- *         example="The given data was invalid."
- *     ),
- *     @OA\Property(
- *         property="errors",
- *         type="object",
- *
- *         @OA\AdditionalProperties(
- *             type="array",
- *
- *             @OA\Items(type="string")
- *         ),
- *         example={
- *             "email": {"The email field is required."},
- *             "password": {"The password field is required."}
- *         }
- *     )
- * )
- *
- * @OA\Schema(
- *     schema="UnauthorizedError",
- *
- *     @OA\Property(
- *         property="message",
- *         type="string",
- *         example="Unauthenticated."
- *     )
- * )
- *
- * @OA\Schema(
- *     schema="NotFoundError",
- *
- *     @OA\Property(
- *         property="message",
- *         type="string",
- *         example="Resource not found."
- *     )
- * )
- *
- * @OA\SecurityScheme(
- *     securityScheme="bearerAuth",
- *     type="http",
- *     scheme="bearer",
- *     bearerFormat="JWT"
  * )
  */
 class AuthController extends Controller

@@ -18,20 +18,6 @@ use Illuminate\Support\Facades\Storage;
  * )
  *
  * @OA\Schema(
- *     schema="User",
- *     required={"id", "name", "email"},
- *
- *     @OA\Property(property="id", type="integer"),
- *     @OA\Property(property="name", type="string"),
- *     @OA\Property(property="email", type="string", format="email"),
- *     @OA\Property(property="image", type="string", format="uri", nullable=true),
- *     @OA\Property(property="email_verified_at", type="string", format="date-time", nullable=true),
- *     @OA\Property(property="roles", type="array", @OA\Items(type="string")),
- *     @OA\Property(property="created_at", type="string", format="date-time"),
- *     @OA\Property(property="updated_at", type="string", format="date-time")
- * )
- *
- * @OA\Schema(
  *     schema="StoreUserRequest",
  *     required={"name", "email", "password", "password_confirmation", "role"},
  *
